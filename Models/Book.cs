@@ -2,7 +2,8 @@ namespace bookish.Models;
 
 public class Book
 {
-    public string Title;
-    public string Author;
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public string Author { get; set; }
     // public string ISBN;
 }
