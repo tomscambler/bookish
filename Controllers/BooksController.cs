@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using bookish.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace bookish.Controllers;
 
@@ -15,25 +16,9 @@ public class BookController : Controller
 
     public IActionResult Index()
     {
-        List<Book> books = new List<Book>
-        {   
-            new Book 
-            {
-                Title = "Dune",
-                Author = "Frank Herbert"
-            },
-            new Book
-            {
-                Title = "The Art Of War",
-                Author = "Sun Tzu"
-            },
-            new Book
-            {
-                Title = "Fermat's Last Theorem",
-                Author = "Simon Singh"
-            }
-
-        };
+        var context = new BookContext();
+        List<Book> books = context.Books
+            .ToList();
 
         return View(books);
     }
