@@ -1,0 +1,24 @@
+@model Book
+    
+@{
+    ViewData["Title"] = "Books";
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">@Model.Id</th>
+            <td>@Model.Title</td>
+            <td>@Model.Author</td>
+        </tr>
+    </tbody>
+</table>
+<a class="btn btn-outline-dark" asp-controller="Home" asp-action="Index">Home Page</a>
+<a asp-action="DeletePost" asp-route-Id="@Model.Id" class="btn btn-primary">Delete</a>
