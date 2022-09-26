@@ -10,7 +10,7 @@ using bookish;
 
 namespace bookish.Migrations
 {
-    [DbContext(typeof(BookContext))]
+    [DbContext(typeof(BookishContext))]
     [Migration("20220923095130_CreateBookishDB")]
     partial class CreateBookishDB
     {
