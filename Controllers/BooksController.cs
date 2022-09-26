@@ -1,7 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using bookish.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace bookish.Controllers;
 
@@ -16,7 +15,7 @@ public class BookController : Controller
 
     public IActionResult Index()
     {
-        var context = new BookContext();
+        var context = new BookishContext();
         List<Book> books = context.Books
             .OrderByDescending( b => b.Id )
             .ToList(); 
@@ -32,7 +31,7 @@ public class BookController : Controller
     [HttpPost]
     public IActionResult AddBookComfirmed(Book book)
     {
-        var context = new BookContext();
+        var context = new BookishContext();
         context.Books.Add(book);
         context.SaveChanges();
         return RedirectToAction("Index");
@@ -40,7 +39,7 @@ public class BookController : Controller
     //GET delete
     public IActionResult Delete(Book book)
     {
-        var context = new BookContext();
+        var context = new BookishContext();
         if (book.Id == 0)
         {
             return NotFound();
@@ -56,7 +55,7 @@ public class BookController : Controller
 
     public IActionResult DeleteConfirm(Book book)
     {
-        var context = new BookContext();
+        var context = new BookishContext();
         context.Remove(book);
         context.SaveChanges();
         return RedirectToAction("Index");
@@ -65,7 +64,7 @@ public class BookController : Controller
     //get Edit
     public IActionResult Update(Book book)
     {
-        var context = new BookContext();
+        var context = new BookishContext();
         var target = context.Books.Find(book.Id);
         if (target == null)
         {
@@ -76,7 +75,7 @@ public class BookController : Controller
 
    public IActionResult UpdateConfirm(Book book)
     {
-        var context = new BookContext();
+        var context = new BookishContext();
         context.Update(book);
         context.SaveChanges();
         return RedirectToAction("Index");
