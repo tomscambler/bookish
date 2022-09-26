@@ -1,0 +1,27 @@
+@model List<Stock>
+
+@{
+    ViewData["Title"] = "Stock";
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Number in Stock</th>
+            <th scope="col">Number Available</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (Stock stock in Model)
+    {   
+        <tr>
+            <td>@stock.Book.Title</td>
+            <td>@stock.Book.Author</td>
+        </tr>
+    }
+    </tbody>
+</table>
+<a asp-controller="Stock" asp-action="Index" class="btn btn-outline-dark">Back</a>
+

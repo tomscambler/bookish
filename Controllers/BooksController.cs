@@ -33,6 +33,12 @@ public class BookController : Controller
     {
         var context = new BookishContext();
         context.Books.Add(book);
+        context.Stock.Add(new Stock()
+        {
+            Book = book,
+            Status = "1"
+        });
+        
         context.SaveChanges();
         return RedirectToAction("Index");
     }
