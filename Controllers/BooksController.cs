@@ -78,18 +78,7 @@ public class BookController : Controller
         }
         return View(target);
     }
-    [HttpPost]
-    public IActionResult UpdateComfirmed(Book obj)
-    {
-        var context = new BookContext();
-        if (ModelState.IsValid)
-        {
-            context.Entry(obj).State = EntityState.Modified;
-            context.SaveChanges();
-            return RedirectToAction("Index");
-        }
-        return View();
-    }
+
 
     
 }
