@@ -7,7 +7,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col"></th>
+            <th scope="col">Number</th>
             <th scope="col">Title</th>
             <th scope="col">Author</th>
             <th scope="col">Changes</th>
@@ -17,7 +17,7 @@
     @foreach (Book book in Model)
     {   
         <tr>
-            <th scope="row">@book.Id</th>
+            <td>@book.Id</td>
             <td>@book.Title</td>
             <td>@book.Author</td>
             <td>
