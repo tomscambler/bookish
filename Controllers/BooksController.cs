@@ -7,7 +7,6 @@ namespace bookish.Controllers;
 
 public class BookController : Controller
 {
-
     private readonly ILogger<BookController> _logger;
 
     public BookController(ILogger<BookController> logger)
@@ -19,7 +18,8 @@ public class BookController : Controller
     {
         var context = new BookContext();
         List<Book> books = context.Books
-            .ToList();
+            .OrderByDescending( b => b.Id )
+            .ToList(); 
 
         return View(books);
     }
