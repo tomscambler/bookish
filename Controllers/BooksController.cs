@@ -30,22 +30,22 @@ public class BookController : Controller
     }
     // post book
     [HttpPost]
-    public IActionResult AddBookComfirmed(Book obj)
+    public IActionResult AddBookComfirmed(Book book)
     {
         var context = new BookContext();
-        context.Books.Add(obj);
+        context.Books.Add(book);
         context.SaveChanges();
         return RedirectToAction("Index");
     }
     //GET delete
-    public IActionResult Delete(int? id)
+    public IActionResult Delete(Book book)
     {
         var context = new BookContext();
-        if (id == null || id == 0)
+        if (book.Id == 0)
         {
             return NotFound();
         }
-        var target = context.Books.Find(id);
+        var target = context.Books.Find(book.Id);
         if (target == null)
         {
             return NotFound();
@@ -54,24 +54,19 @@ public class BookController : Controller
     }
     //POST delete
 
-    public IActionResult DeletePost(int? id)
+    public IActionResult DeleteConfirm(Book book)
     {
         var context = new BookContext();
-        var target = context.Books.Find(id);
-        if (target == null)
-        {
-            return NotFound();
-        }
-        context.Books.Remove(target);
+        context.Remove(book);
         context.SaveChanges();
         return RedirectToAction("Index");
     }
 
     //get Edit
-    public IActionResult Update(int? id)
+    public IActionResult Update(Book book)
     {
         var context = new BookContext();
-        var target = context.Books.Find(id);
+        var target = context.Books.Find(book.Id);
         if (target == null)
         {
             return NotFound();
@@ -79,6 +74,11 @@ public class BookController : Controller
         return View(target);
     }
 
-
-    
+   public IActionResult UpdateConfirm(Book book)
+    {
+        var context = new BookContext();
+        context.Update(book);
+        context.SaveChanges();
+        return RedirectToAction("Index");
+    }
 }
