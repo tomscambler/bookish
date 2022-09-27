@@ -1,0 +1,31 @@
+@model List<Customer>
+    
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (Customer customer in Model)
+    {   
+        <tr>
+            <td>@customer.Name</td>
+            <td>@customer.Email</td>
+            @* <td>
+                <div class="w-100">
+                    <a asp-action="Update" asp-route-Id="@book.Id" class="btn btn-primary mx-1">Update</a>
+                    <a asp-action="Delete" asp-route-Id="@book.Id" class="btn btn-danger mx-1">Delete</a>
+                </div>
+            </td> *@
+        </tr>
+    }
+    </tbody>
+</table>
+<a asp-controller="Home" asp-action="Index" class="btn btn-outline-dark">Home Page</a>
+<a asp-action="AddCustomer" class="btn btn-outline-success">Add Customer</a>

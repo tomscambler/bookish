@@ -1,0 +1,20 @@
+@model Customer
+
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<form method="post" asp-action="AddCustomerComfirmed">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+    <a class="btn btn-outline-dark" asp-action="Index">Cancel</a>
+</form>

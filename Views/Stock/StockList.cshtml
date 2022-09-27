@@ -9,18 +9,25 @@
         <tr>
             <th scope="col">Title</th>
             <th scope="col">Author</th>
-            <th scope="col">Number in Stock</th>
-            <th scope="col">Number Available</th>
+            <th scope="col">Total Stock</th>
+            <th scope="col">Stock Available</th>
+            <th scope="col">Amend Stock</th>
         </tr>
     </thead>
     <tbody>
-    @foreach (StockDisplay stock in Model)
+    @foreach (StockDisplay stockDisplay in Model)
     {   
         <tr>
-            <td>@stock.Title</td>
-            <td>@stock.Author</td>
-            <td>@stock.TotalStock</td>
-            <td>@stock.StockAvailable</td>
+            <td>@stockDisplay.Title</td>
+            <td>@stockDisplay.Author</td>
+            <td>@stockDisplay.TotalStock</td>
+            <td>@stockDisplay.StockAvailable</td>
+            <td>
+                <div class="w-100">
+                    <a asp-action="AddStock" asp-route-Id="@stockDisplay.BookId" class="btn btn-primary mx-1">Add a copy</a>
+                    <a asp-action="DeleteStock" asp-route-Id="@stockDisplay.BookId" class="btn btn-danger mx-1">Delete a copy</a>
+                </div>
+            </td>
         </tr>
     }
     </tbody>
