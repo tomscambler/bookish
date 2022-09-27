@@ -1,0 +1,29 @@
+@model List<Stock>
+
+@{
+    ViewData["Title"] = "Stock";
+}
+
+<table class="table table-striped">
+    <h1>Customers with @ViewBag.bookTitle by @ViewBag.bookAuthor on loan:</h1>
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Return Date</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (Stock stock in Model)
+    {   
+        <tr>
+            <td>@stock.Customer.Name</td>
+            <td>@stock.Customer.Email</td>
+            <td>@stock.ReturnDate</td>
+        </tr>
+    }
+    </tbody>
+</table>
+<a asp-controller="Stock" asp-action="Index" class="btn btn-outline-dark">Back</a>
+
+@* <span class="glyphicon glyphicon-search"></span> *@

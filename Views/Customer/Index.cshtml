@@ -17,12 +17,11 @@
         <tr>
             <td>@customer.Name</td>
             <td>@customer.Email</td>
-            @* <td>
+            <td>
                 <div class="w-100">
-                    <a asp-action="Update" asp-route-Id="@book.Id" class="btn btn-primary mx-1">Update</a>
-                    <a asp-action="Delete" asp-route-Id="@book.Id" class="btn btn-danger mx-1">Delete</a>
+                    <a asp-action="ViewBooks" asp-route-Id="@customer.Id" class="btn btn-primary mx-1">View Books on Loan</a>
                 </div>
-            </td> *@
+            </td>
         </tr>
     }
     </tbody>

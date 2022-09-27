@@ -64,4 +64,19 @@ public class StockController : Controller
         
         return RedirectToAction("StockList");
     }
+
+    public IActionResult FindCustomersHoldingStock(int? Id)
+    {
+        var context = new BookishContext();
+        Book? book = context.Books.Find(Id);
+        List<Stock> stock = context.Stock
+            .Where(s => s.Book==book && !s.IsAvailable)
+            .Include(s => s.Customer)
+            .ToList();
+
+        ViewBag.bookTitle = book.Title;
+        ViewBag.bookAuthor = book.Author;
+        return View(stock);
+    }
+    
 }

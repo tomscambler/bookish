@@ -37,33 +37,18 @@ public class CustomerController : Controller
         context.SaveChanges();
         return RedirectToAction("Index");
     }
-//     public IActionResult AddStock(int? Id)
-//     {
-//         var context = new BookishContext();
-//         Book? book = context.Books.Find(Id);
 
-//         context.Stock.Add(new Stock()
-//         {
-//             Book = book,
-//             IsAvailable = true
-//         });
-        
-//         context.SaveChanges();
-//         return RedirectToAction("StockList");
-//     }
+    public IActionResult ViewBooks(int? Id)
+    {
+        var context = new BookishContext();
+        Customer? customer = context.Customers.Find(Id);
 
-//     public IActionResult DeleteStock(int? Id)
-//     {
-//         var context = new BookishContext();
-//         Book? book = context.Books.Find(Id);
-//         Stock? stock = context.Stock.FirstOrDefault( stockItem => stockItem.Book==book && stockItem.IsAvailable);
-        
-//         if(stock!=null)
-//         {
-//             context.Remove(stock);
-//             context.SaveChanges();
-//         }
-        
-//         return RedirectToAction("StockList");
-//     }
+        List<Stock> stock = context.Stock
+            .Where(s => s.Customer==customer)
+            .Include(s => s.Book)
+            .ToList();
+        ViewBag.customerName = customer.Name;
+        ViewBag.customerEmail = customer.Email;
+        return View(stock);
+    }
 }
