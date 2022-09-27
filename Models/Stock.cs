@@ -8,6 +8,6 @@ public class Stock
     public int Id { get; set; }
     public Book? Book { get; set; }
     public Customer? Customer { get; set; }
-    public string? Status { get; set; }
+    public bool IsAvailable { get; set; }
     public DateTime ReturnDate { get; set; }
 }

@@ -3,12 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace bookish.Models;
 
-public class Book
+public class StockDisplay
 {
     public int Id { get; set; }
-
-    public string Title { get; set; }
+    public string Title{ get; set; }
     public string Author { get; set; }
-    // public string ISBN;
-    public List<Stock> Stock { get; set; }
+    public int TotalStock { get; set; }
+    public int StockAvailable { get; set; }
 }

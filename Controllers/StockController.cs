@@ -22,10 +22,16 @@ public class StockController : Controller
     public IActionResult StockList()
     {
         var context = new BookishContext();
-        List<Stock> stock = context.Stock
-            .Include(s => s.Book)
-            .ToList(); 
-        string name = "what ever";
+        List<StockDisplay> stock = context.Books
+            .Where(a => a.Stock.Count(b => b.IsAvailable) > 0)
+            .Select(b => new StockDisplay(){
+                Id = b.Id,
+                Title = b.Title,
+                Author = b.Author,
+                TotalStock = b.Stock.Count(),
+                StockAvailable = b.Stock.Count(a => a.IsAvailable),
+            })
+            .ToList();
         return View(stock);
     }
 }

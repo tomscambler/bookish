@@ -1,4 +1,4 @@
-@model List<Stock>
+@model List<StockDisplay>
 
 @{
     ViewData["Title"] = "Stock";
@@ -14,11 +14,13 @@
         </tr>
     </thead>
     <tbody>
-    @foreach (Stock stock in Model)
+    @foreach (StockDisplay stock in Model)
     {   
         <tr>
-            <td>@stock.Book.Title</td>
-            <td>@stock.Book.Author</td>
+            <td>@stock.Title</td>
+            <td>@stock.Author</td>
+            <td>@stock.TotalStock</td>
+            <td>@stock.StockAvailable</td>
         </tr>
     }
     </tbody>

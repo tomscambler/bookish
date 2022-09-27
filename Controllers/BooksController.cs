@@ -36,7 +36,7 @@ public class BookController : Controller
         context.Stock.Add(new Stock()
         {
             Book = book,
-            Status = "1"
+            IsAvailable = true
         });
         
         context.SaveChanges();
